@@ -1,3 +1,15 @@
+/*
+-----------------------------------------------------------------------------
+DEQUES & DECKS: PROJETO DE BARALHO INTERATIVO FEITO COM ESTRUTURAS DE DADOS
+-----------------------------------------------------------------------------
+O projeto foi feito utilizando como principal estrutura de dados a lista dupla (Double ended queue)
+
+Cada carta consiste de um tipo struct definido como "node"
+
+O baralho é feito utilizando uma estrutura de deque, feito por sua vez por uma sequêcia de nodes
+duplamente encadeados entre si
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -32,6 +44,10 @@ int main () {
             mostra(b);
         } else if (strcmp(entrada, "VIRA") == 0) {
             vira(&b);
+        } else if (strcmp(entrada, "SOBE") == 0) {
+            printf("Qual carta voce quer enviar ao topo?\n");
+            scanf("%d", &valor);
+            sobe(&b, valor);
         } else {
             printf("Insira uma entrada valida.");
         }

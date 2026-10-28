@@ -33,6 +33,27 @@ void corta (baralho *b, int x) {
     }
 }
 
+//Coloca a carta selecionada no topo do baralho
+void sobe (baralho *b, int x) {
+    node *atual = *b;
+    int cont = 1;
+    while (cont < x) {
+        atual = atual->prox;
+        cont++;
+    }
+
+    push_front(atual->valor, b);
+
+    node *atual1, *atual2;
+    atual1 = atual->ant;
+    atual2 = atual->prox;
+
+    atual1->prox = atual2;
+    atual2->ant = atual1;
+
+    free(atual);
+}
+
 //Inverte a ordem de todas as cartas
 void vira (baralho *b) {
     node *atual = *b;
