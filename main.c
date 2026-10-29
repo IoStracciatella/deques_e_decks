@@ -48,6 +48,18 @@ int main () {
             printf("Qual carta voce quer enviar ao topo?\n");
             scanf("%d", &valor);
             sobe(&b, valor);
+        } else if (strcmp(entrada, "CARTA") == 0) {
+            printf("Qual carta voce quer imprimir?\n");
+            scanf("%d", &valor);
+            carta(&b, valor);
+        } else if (strcmp(entrada, "POSICAO") == 0) {
+            printf("Voce quer saber a posicao de qual carta?\n");
+            scanf("%d", &valor);
+            printf("%d", posicao(&b, valor));
+        } else if (strcmp(entrada, "VIRATOPO") == 0) {
+            printf("Acima de qual carta voce quer virar?\n");
+            scanf("%d", &valor);
+            viraTopo(&b, valor);
         } else {
             printf("Insira uma entrada valida.");
         }

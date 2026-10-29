@@ -5,6 +5,19 @@
 
 //Cria um novo baralho com uma dada quantidade de cartas
 void novoBaralho (baralho *b, int qtde) {
+    //Liberando a memória de todos os nodes caso já exista um baralho criado
+    if (*b != NULL) {
+        node *atual = *b, *aux;
+
+        while (atual != NULL) {
+            aux = atual->prox;
+            free(atual);
+            atual = aux;
+        }
+        
+        *b = NULL;
+    }
+
     int i;
     for (i = 1; i <= qtde; i++) {
         push_front(i, b);
@@ -91,4 +104,56 @@ void mostra (baralho baralho) {
         printf("%d\n", atual->valor);
         atual = atual->ant;
     }
+}
+
+//Inverte a ordem de todas as cartas acima de uma tal carta
+void viraTopo (baralho *b, int k) {
+    node *inicio = *b;
+    node *fim = *b;
+    int total = 1, aux;
+
+    //Leva "inicio" até a carta escolhida
+    int i;
+    for (i = 0; i < k; i++) {
+        inicio = inicio->prox;
+    }
+
+    //Leva "fim" até a o final do baralho e conta quantas cartas tem
+    while (fim->prox != NULL) {
+        fim = fim->prox;
+        total++;
+    }
+
+    total = total/2;
+    for (i = 0; i < total; i++) {
+        aux = fim->valor;
+        fim->valor = inicio->valor;
+        inicio->valor = aux;
+
+        inicio = inicio->prox;
+        fim = fim->ant;
+    }
+}
+
+void carta (baralho *b, int p) {
+    node *atual = *b;
+    
+    int i;
+    for (i = 1; i < p; i++) {
+        atual = atual->prox;
+    }
+
+    printf("%d", atual->valor);
+}
+
+int posicao (baralho *b, int x) {
+    int cont = 1;
+    
+    node *atual = *b;
+    while (cont < x) {
+        atual = atual->prox;
+        cont++;
+    }
+
+    return cont;
 }
