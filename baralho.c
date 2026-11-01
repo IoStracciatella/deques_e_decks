@@ -157,3 +157,7 @@ int posicao (baralho *b, int x) {
 
     return cont;
 }
+
+void salva (baralho *b) {
+    
+}

@@ -13,5 +13,6 @@ void viraTopo (baralho *b, int k);
 void mostra (baralho baralho);
 void carta (baralho *b, int p);
 int posicao (baralho *b, int x);
+void salva (baralho *b);
 
 #endif
